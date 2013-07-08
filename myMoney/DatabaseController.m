@@ -70,7 +70,7 @@
     NSString *docsDir = [dirPaths objectAtIndex:0];
     
     // Build the path to the database file
-    NSString *databaseFileName = [NSString stringWithFormat:@"%@.db", [account serviceName]];
+    NSString *databaseFileName = @"database.db";
     NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
     
     NSFileManager *filemgr = [NSFileManager defaultManager];
@@ -107,7 +107,8 @@
     
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = [dirPaths objectAtIndex:0];
-    NSString *databaseFileName = [NSString stringWithFormat:@"%@.db", [account serviceName]];
+    
+    NSString *databaseFileName = @"database.db";
     NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
     const char *dbpath = [databasePath UTF8String];
     
@@ -138,6 +139,27 @@
 -(void)removeRecord:(Record *)record forAccount:(Account*)account
 {
 //    DELETE FROM table_name WHERE some_column=some_value;
+    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE id=%d", [account serviceName], record.ID];
+    
+    sqlite3_stmt *statement;
+    
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    
+    NSString *databaseFileName = @"database.db";
+    NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
+    const char *dbpath = [databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK){
+        const char *insert_stmt = [query UTF8String];
+        
+        sqlite3_prepare_v2(contactDB, insert_stmt, -1, &statement, NULL);
+        if (sqlite3_step(statement) != SQLITE_DONE){
+            NSLog(@"Failed to delete record");
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(contactDB);
+    }
 }
 
 -(NSArray *)allRecordsForAccount:(Account*)account
@@ -151,7 +173,8 @@
     
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = [dirPaths objectAtIndex:0];
-    NSString *databaseFileName = [NSString stringWithFormat:@"%@.db", [account serviceName]];
+    
+    NSString *databaseFileName = @"database.db";
     NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
     const char *dbpath = [databasePath UTF8String];
     
@@ -211,7 +234,8 @@
     
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = [dirPaths objectAtIndex:0];
-    NSString *databaseFileName = [NSString stringWithFormat:@"%@.db", [account serviceName]];
+    
+    NSString *databaseFileName = @"database.db";
     NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
     const char *dbpath = [databasePath UTF8String];
     
