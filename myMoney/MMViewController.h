@@ -10,4 +10,11 @@
 
 @interface MMViewController : UIViewController
 
+@property (nonatomic, assign) IBOutlet UITextField *amountField;
+@property (nonatomic, assign) IBOutlet UITextField *descriptionField;
+@property (nonatomic, assign) IBOutlet UITextField *tagsField;
+
+-(IBAction)createRecord:(id)sender;
+-(IBAction)fetchRecords:(id)sender;
+
 @end

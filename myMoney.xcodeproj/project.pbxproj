@@ -18,10 +18,15 @@
 		C37FB8A91768DC0F00D47D31 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C37FB8A81768DC0F00D47D31 /* Default-568h@2x.png */; };
 		C37FB8AC1768DC0F00D47D31 /* MMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FB8AB1768DC0F00D47D31 /* MMViewController.m */; };
 		C37FB8AF1768DC0F00D47D31 /* MMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C37FB8AD1768DC0F00D47D31 /* MMViewController.xib */; };
+		C37FB8B81768DD6600D47D31 /* DatabaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FB8B71768DD6600D47D31 /* DatabaseController.m */; };
+		C37FB8BA1768DE6C00D47D31 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C37FB8B91768DE6C00D47D31 /* libsqlite3.dylib */; };
+		C37FB8BE1768E23000D47D31 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FB8BD1768E23000D47D31 /* Record.m */; };
+		C37FB8C11768E23000D47D31 /* NSArray+convert.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FB8C01768E23000D47D31 /* NSArray+convert.m */; };
+		C3F51B8D177F4DEA000D136C /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F51B8C177F4DEA000D136C /* Account.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C37FB88E1768DC0F00D47D31 /* myMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37FB88E1768DC0F00D47D31 /* Money History.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money History.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37FB8921768DC0F00D47D31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C37FB8941768DC0F00D47D31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C37FB8961768DC0F00D47D31 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -37,6 +42,15 @@
 		C37FB8AA1768DC0F00D47D31 /* MMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMViewController.h; sourceTree = "<group>"; };
 		C37FB8AB1768DC0F00D47D31 /* MMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMViewController.m; sourceTree = "<group>"; };
 		C37FB8AE1768DC0F00D47D31 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MMViewController.xib; sourceTree = "<group>"; };
+		C37FB8B61768DD6600D47D31 /* DatabaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseController.h; sourceTree = "<group>"; };
+		C37FB8B71768DD6600D47D31 /* DatabaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseController.m; sourceTree = "<group>"; };
+		C37FB8B91768DE6C00D47D31 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C37FB8BC1768E23000D47D31 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
+		C37FB8BD1768E23000D47D31 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
+		C37FB8BF1768E23000D47D31 /* NSArray+convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+convert.h"; sourceTree = "<group>"; };
+		C37FB8C01768E23000D47D31 /* NSArray+convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+convert.m"; sourceTree = "<group>"; };
+		C3F51B8B177F4DEA000D136C /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		C3F51B8C177F4DEA000D136C /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C37FB8BA1768DE6C00D47D31 /* libsqlite3.dylib in Frameworks */,
 				C37FB8931768DC0F00D47D31 /* UIKit.framework in Frameworks */,
 				C37FB8951768DC0F00D47D31 /* Foundation.framework in Frameworks */,
 				C37FB8971768DC0F00D47D31 /* CoreGraphics.framework in Frameworks */,
@@ -65,7 +80,7 @@
 		C37FB88F1768DC0F00D47D31 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C37FB88E1768DC0F00D47D31 /* myMoney.app */,
+				C37FB88E1768DC0F00D47D31 /* Money History.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +88,7 @@
 		C37FB8911768DC0F00D47D31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C37FB8B91768DE6C00D47D31 /* libsqlite3.dylib */,
 				C37FB8921768DC0F00D47D31 /* UIKit.framework */,
 				C37FB8941768DC0F00D47D31 /* Foundation.framework */,
 				C37FB8961768DC0F00D47D31 /* CoreGraphics.framework */,
@@ -85,6 +101,10 @@
 			children = (
 				C37FB8A11768DC0F00D47D31 /* MMAppDelegate.h */,
 				C37FB8A21768DC0F00D47D31 /* MMAppDelegate.m */,
+				C37FB8BF1768E23000D47D31 /* NSArray+convert.h */,
+				C37FB8C01768E23000D47D31 /* NSArray+convert.m */,
+				C37FB8BB1768E21900D47D31 /* Models */,
+				C37FB8B51768DD4000D47D31 /* Controllers */,
 				C37FB8AA1768DC0F00D47D31 /* MMViewController.h */,
 				C37FB8AB1768DC0F00D47D31 /* MMViewController.m */,
 				C37FB8AD1768DC0F00D47D31 /* MMViewController.xib */,
@@ -107,6 +127,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C37FB8B51768DD4000D47D31 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C37FB8B61768DD6600D47D31 /* DatabaseController.h */,
+				C37FB8B71768DD6600D47D31 /* DatabaseController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C37FB8BB1768E21900D47D31 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C37FB8BC1768E23000D47D31 /* Record.h */,
+				C37FB8BD1768E23000D47D31 /* Record.m */,
+				C3F51B8B177F4DEA000D136C /* Account.h */,
+				C3F51B8C177F4DEA000D136C /* Account.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,7 +164,7 @@
 			);
 			name = myMoney;
 			productName = myMoney;
-			productReference = C37FB88E1768DC0F00D47D31 /* myMoney.app */;
+			productReference = C37FB88E1768DC0F00D47D31 /* Money History.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -177,6 +217,10 @@
 				C37FB89F1768DC0F00D47D31 /* main.m in Sources */,
 				C37FB8A31768DC0F00D47D31 /* MMAppDelegate.m in Sources */,
 				C37FB8AC1768DC0F00D47D31 /* MMViewController.m in Sources */,
+				C37FB8B81768DD6600D47D31 /* DatabaseController.m in Sources */,
+				C37FB8BE1768E23000D47D31 /* Record.m in Sources */,
+				C37FB8C11768E23000D47D31 /* NSArray+convert.m in Sources */,
+				C3F51B8D177F4DEA000D136C /* Account.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +268,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -244,7 +288,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -257,7 +301,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMoney/myMoney-Prefix.pch";
 				INFOPLIST_FILE = "myMoney/myMoney-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "Money History";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -268,7 +313,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMoney/myMoney-Prefix.pch";
 				INFOPLIST_FILE = "myMoney/myMoney-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "Money History";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -292,6 +338,7 @@
 				C37FB8B41768DC0F00D47D31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

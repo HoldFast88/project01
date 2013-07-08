@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray_convert : NSObject
+@interface NSArray(convert)
+
+-(NSString*)commaSeparatedValuesString;
+
++(NSArray*)arrayFromStringCommaSeparatedValues:(NSString*)string;
 
 @end
