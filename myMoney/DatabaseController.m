@@ -76,7 +76,7 @@
     NSFileManager *filemgr = [NSFileManager defaultManager];
     
     if ([filemgr fileExistsAtPath:databasePath] == NO){
-		const char *dbpath = [databasePath UTF8String];
+		const char *dbpath = [self databasePath];
         
         if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK){
             char *errMsg;
@@ -105,14 +105,9 @@
 {
     BOOL success = NO;
     
-    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsDir = [dirPaths objectAtIndex:0];
+    const char *dbpath = [self databasePath];
     
-    NSString *databaseFileName = @"database.db";
-    NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
-    const char *dbpath = [databasePath UTF8String];
-    
-    sqlite3_stmt    *statement;
+    sqlite3_stmt *statement;
     
     if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK)
     {
@@ -143,12 +138,7 @@
     
     sqlite3_stmt *statement;
     
-    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsDir = [dirPaths objectAtIndex:0];
-    
-    NSString *databaseFileName = @"database.db";
-    NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
-    const char *dbpath = [databasePath UTF8String];
+    const char *dbpath = [self databasePath];
     
     if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK){
         const char *insert_stmt = [query UTF8String];
@@ -170,13 +160,7 @@
     sqlite3_stmt *statement;
     
     const char *query_stmt = [query UTF8String];
-    
-    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsDir = [dirPaths objectAtIndex:0];
-    
-    NSString *databaseFileName = @"database.db";
-    NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
-    const char *dbpath = [databasePath UTF8String];
+    const char *dbpath = [self databasePath];
     
     if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK) {
         sqlite3_prepare_v2(contactDB, query_stmt, -1, &statement, NULL);
@@ -232,12 +216,7 @@
     
     const char *query_stmt = [query UTF8String];
     
-    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsDir = [dirPaths objectAtIndex:0];
-    
-    NSString *databaseFileName = @"database.db";
-    NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
-    const char *dbpath = [databasePath UTF8String];
+    const char *dbpath = [self databasePath];
     
     if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK) {
         sqlite3_prepare_v2(contactDB, query_stmt, -1, &statement, NULL);
@@ -264,6 +243,20 @@
     sqlite3_finalize(statement);
     
     return records;
+}
+
+#pragma mark Helpers
+
+- (const char *)databasePath
+{
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    
+    NSString *databaseFileName = @"database.db";
+    NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
+    const char *dbpath = [databasePath UTF8String];
+    
+    return dbpath;
 }
 
 @end
