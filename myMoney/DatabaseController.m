@@ -10,6 +10,7 @@
 #import "NSArray+convert.h"
 
 #define kAccounts @"accounts"
+#define dbFileName @"database.db"
 
 @interface DatabaseController ()
 
@@ -70,13 +71,13 @@
     NSString *docsDir = [dirPaths objectAtIndex:0];
     
     // Build the path to the database file
-    NSString *databaseFileName = @"database.db";
+    NSString *databaseFileName = dbFileName;
     NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
     
     NSFileManager *filemgr = [NSFileManager defaultManager];
     
     if ([filemgr fileExistsAtPath:databasePath] == NO){
-		const char *dbpath = [self databasePath];
+		const char *dbpath = GetDatabasePath();
         
         if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK){
             char *errMsg;
@@ -105,7 +106,7 @@
 {
     BOOL success = NO;
     
-    const char *dbpath = [self databasePath];
+    const char *dbpath = GetDatabasePath();
     
     sqlite3_stmt *statement;
     
@@ -138,7 +139,7 @@
     
     sqlite3_stmt *statement;
     
-    const char *dbpath = [self databasePath];
+    const char *dbpath = GetDatabasePath();
     
     if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK){
         const char *insert_stmt = [query UTF8String];
@@ -160,7 +161,7 @@
     sqlite3_stmt *statement;
     
     const char *query_stmt = [query UTF8String];
-    const char *dbpath = [self databasePath];
+    const char *dbpath = GetDatabasePath();
     
     if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK) {
         sqlite3_prepare_v2(contactDB, query_stmt, -1, &statement, NULL);
@@ -216,7 +217,7 @@
     
     const char *query_stmt = [query UTF8String];
     
-    const char *dbpath = [self databasePath];
+    const char *dbpath = GetDatabasePath();
     
     if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK) {
         sqlite3_prepare_v2(contactDB, query_stmt, -1, &statement, NULL);
@@ -247,12 +248,12 @@
 
 #pragma mark Helpers
 
-- (const char *)databasePath
+inline const char *GetDatabasePath()
 {
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = [dirPaths objectAtIndex:0];
     
-    NSString *databaseFileName = @"database.db";
+    NSString *databaseFileName = dbFileName;
     NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
     const char *dbpath = [databasePath UTF8String];
     
