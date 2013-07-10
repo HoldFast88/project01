@@ -248,7 +248,7 @@
 
 #pragma mark Helpers
 
-inline const char *GetDatabasePath()
+const char *GetDatabasePath()
 {
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = [dirPaths objectAtIndex:0];

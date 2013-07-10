@@ -16,12 +16,22 @@
 		C37FB8A51768DC0F00D47D31 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C37FB8A41768DC0F00D47D31 /* Default.png */; };
 		C37FB8A71768DC0F00D47D31 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C37FB8A61768DC0F00D47D31 /* Default@2x.png */; };
 		C37FB8A91768DC0F00D47D31 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C37FB8A81768DC0F00D47D31 /* Default-568h@2x.png */; };
-		C37FB8AC1768DC0F00D47D31 /* MMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FB8AB1768DC0F00D47D31 /* MMViewController.m */; };
-		C37FB8AF1768DC0F00D47D31 /* MMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C37FB8AD1768DC0F00D47D31 /* MMViewController.xib */; };
 		C37FB8B81768DD6600D47D31 /* DatabaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FB8B71768DD6600D47D31 /* DatabaseController.m */; };
 		C37FB8BA1768DE6C00D47D31 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C37FB8B91768DE6C00D47D31 /* libsqlite3.dylib */; };
 		C37FB8BE1768E23000D47D31 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FB8BD1768E23000D47D31 /* Record.m */; };
 		C37FB8C11768E23000D47D31 /* NSArray+convert.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FB8C01768E23000D47D31 /* NSArray+convert.m */; };
+		C3973669178DC9F1001B1106 /* PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3973664178DC9F1001B1106 /* PKRevealController.m */; };
+		C397366A178DC9F1001B1106 /* PKRevealControllerContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3973666178DC9F1001B1106 /* PKRevealControllerContainerView.m */; };
+		C397366B178DC9F1001B1106 /* UIViewController+PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3973668178DC9F1001B1106 /* UIViewController+PKRevealController.m */; };
+		C3973671178DCAAB001B1106 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C397366F178DCAAB001B1106 /* ListViewController.m */; };
+		C3973672178DCAAB001B1106 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3973670178DCAAB001B1106 /* ListViewController.xib */; };
+		C3973676178DCAF0001B1106 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3973674178DCAF0001B1106 /* SettingsViewController.m */; };
+		C3973677178DCAF0001B1106 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3973675178DCAF0001B1106 /* SettingsViewController.xib */; };
+		C397367B178DCB20001B1106 /* AddRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3973679178DCB20001B1106 /* AddRecordViewController.m */; };
+		C397367C178DCB20001B1106 /* AddRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C397367A178DCB20001B1106 /* AddRecordViewController.xib */; };
+		C397367E178DCBB3001B1106 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C397367D178DCBB3001B1106 /* QuartzCore.framework */; };
+		C3973682178DCCD4001B1106 /* reveal_menu_icon_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = C3973680178DCCD4001B1106 /* reveal_menu_icon_portrait.png */; };
+		C3973683178DCCD4001B1106 /* reveal_menu_icon_portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3973681178DCCD4001B1106 /* reveal_menu_icon_portrait@2x.png */; };
 		C3F51B8D177F4DEA000D136C /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F51B8C177F4DEA000D136C /* Account.m */; };
 /* End PBXBuildFile section */
 
@@ -39,9 +49,6 @@
 		C37FB8A41768DC0F00D47D31 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C37FB8A61768DC0F00D47D31 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C37FB8A81768DC0F00D47D31 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		C37FB8AA1768DC0F00D47D31 /* MMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMViewController.h; sourceTree = "<group>"; };
-		C37FB8AB1768DC0F00D47D31 /* MMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMViewController.m; sourceTree = "<group>"; };
-		C37FB8AE1768DC0F00D47D31 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MMViewController.xib; sourceTree = "<group>"; };
 		C37FB8B61768DD6600D47D31 /* DatabaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseController.h; sourceTree = "<group>"; };
 		C37FB8B71768DD6600D47D31 /* DatabaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseController.m; sourceTree = "<group>"; };
 		C37FB8B91768DE6C00D47D31 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -49,6 +56,24 @@
 		C37FB8BD1768E23000D47D31 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
 		C37FB8BF1768E23000D47D31 /* NSArray+convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+convert.h"; sourceTree = "<group>"; };
 		C37FB8C01768E23000D47D31 /* NSArray+convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+convert.m"; sourceTree = "<group>"; };
+		C3973663178DC9F1001B1106 /* PKRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKRevealController.h; sourceTree = "<group>"; };
+		C3973664178DC9F1001B1106 /* PKRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKRevealController.m; sourceTree = "<group>"; };
+		C3973665178DC9F1001B1106 /* PKRevealControllerContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKRevealControllerContainerView.h; sourceTree = "<group>"; };
+		C3973666178DC9F1001B1106 /* PKRevealControllerContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKRevealControllerContainerView.m; sourceTree = "<group>"; };
+		C3973667178DC9F1001B1106 /* UIViewController+PKRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PKRevealController.h"; sourceTree = "<group>"; };
+		C3973668178DC9F1001B1106 /* UIViewController+PKRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PKRevealController.m"; sourceTree = "<group>"; };
+		C397366E178DCAAB001B1106 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		C397366F178DCAAB001B1106 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		C3973670178DCAAB001B1106 /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
+		C3973673178DCAF0001B1106 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		C3973674178DCAF0001B1106 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		C3973675178DCAF0001B1106 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		C3973678178DCB20001B1106 /* AddRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecordViewController.h; sourceTree = "<group>"; };
+		C3973679178DCB20001B1106 /* AddRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecordViewController.m; sourceTree = "<group>"; };
+		C397367A178DCB20001B1106 /* AddRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRecordViewController.xib; sourceTree = "<group>"; };
+		C397367D178DCBB3001B1106 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C3973680178DCCD4001B1106 /* reveal_menu_icon_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reveal_menu_icon_portrait.png; sourceTree = "<group>"; };
+		C3973681178DCCD4001B1106 /* reveal_menu_icon_portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal_menu_icon_portrait@2x.png"; sourceTree = "<group>"; };
 		C3F51B8B177F4DEA000D136C /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		C3F51B8C177F4DEA000D136C /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C397367E178DCBB3001B1106 /* QuartzCore.framework in Frameworks */,
 				C37FB8BA1768DE6C00D47D31 /* libsqlite3.dylib in Frameworks */,
 				C37FB8931768DC0F00D47D31 /* UIKit.framework in Frameworks */,
 				C37FB8951768DC0F00D47D31 /* Foundation.framework in Frameworks */,
@@ -88,6 +114,7 @@
 		C37FB8911768DC0F00D47D31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C397367D178DCBB3001B1106 /* QuartzCore.framework */,
 				C37FB8B91768DE6C00D47D31 /* libsqlite3.dylib */,
 				C37FB8921768DC0F00D47D31 /* UIKit.framework */,
 				C37FB8941768DC0F00D47D31 /* Foundation.framework */,
@@ -103,11 +130,11 @@
 				C37FB8A21768DC0F00D47D31 /* MMAppDelegate.m */,
 				C37FB8BF1768E23000D47D31 /* NSArray+convert.h */,
 				C37FB8C01768E23000D47D31 /* NSArray+convert.m */,
+				C397367F178DCCC5001B1106 /* Recources */,
+				C397366D178DCA86001B1106 /* ViewControllers */,
+				C3973662178DC9F1001B1106 /* Controller */,
 				C37FB8BB1768E21900D47D31 /* Models */,
 				C37FB8B51768DD4000D47D31 /* Controllers */,
-				C37FB8AA1768DC0F00D47D31 /* MMViewController.h */,
-				C37FB8AB1768DC0F00D47D31 /* MMViewController.m */,
-				C37FB8AD1768DC0F00D47D31 /* MMViewController.xib */,
 				C37FB8991768DC0F00D47D31 /* Supporting Files */,
 			);
 			path = myMoney;
@@ -145,6 +172,44 @@
 				C3F51B8C177F4DEA000D136C /* Account.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		C3973662178DC9F1001B1106 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C3973663178DC9F1001B1106 /* PKRevealController.h */,
+				C3973664178DC9F1001B1106 /* PKRevealController.m */,
+				C3973665178DC9F1001B1106 /* PKRevealControllerContainerView.h */,
+				C3973666178DC9F1001B1106 /* PKRevealControllerContainerView.m */,
+				C3973667178DC9F1001B1106 /* UIViewController+PKRevealController.h */,
+				C3973668178DC9F1001B1106 /* UIViewController+PKRevealController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C397366D178DCA86001B1106 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C397366E178DCAAB001B1106 /* ListViewController.h */,
+				C397366F178DCAAB001B1106 /* ListViewController.m */,
+				C3973670178DCAAB001B1106 /* ListViewController.xib */,
+				C3973673178DCAF0001B1106 /* SettingsViewController.h */,
+				C3973674178DCAF0001B1106 /* SettingsViewController.m */,
+				C3973675178DCAF0001B1106 /* SettingsViewController.xib */,
+				C3973678178DCB20001B1106 /* AddRecordViewController.h */,
+				C3973679178DCB20001B1106 /* AddRecordViewController.m */,
+				C397367A178DCB20001B1106 /* AddRecordViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C397367F178DCCC5001B1106 /* Recources */ = {
+			isa = PBXGroup;
+			children = (
+				C3973680178DCCD4001B1106 /* reveal_menu_icon_portrait.png */,
+				C3973681178DCCD4001B1106 /* reveal_menu_icon_portrait@2x.png */,
+			);
+			name = Recources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,7 +268,11 @@
 				C37FB8A51768DC0F00D47D31 /* Default.png in Resources */,
 				C37FB8A71768DC0F00D47D31 /* Default@2x.png in Resources */,
 				C37FB8A91768DC0F00D47D31 /* Default-568h@2x.png in Resources */,
-				C37FB8AF1768DC0F00D47D31 /* MMViewController.xib in Resources */,
+				C3973672178DCAAB001B1106 /* ListViewController.xib in Resources */,
+				C3973677178DCAF0001B1106 /* SettingsViewController.xib in Resources */,
+				C397367C178DCB20001B1106 /* AddRecordViewController.xib in Resources */,
+				C3973682178DCCD4001B1106 /* reveal_menu_icon_portrait.png in Resources */,
+				C3973683178DCCD4001B1106 /* reveal_menu_icon_portrait@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,11 +285,16 @@
 			files = (
 				C37FB89F1768DC0F00D47D31 /* main.m in Sources */,
 				C37FB8A31768DC0F00D47D31 /* MMAppDelegate.m in Sources */,
-				C37FB8AC1768DC0F00D47D31 /* MMViewController.m in Sources */,
 				C37FB8B81768DD6600D47D31 /* DatabaseController.m in Sources */,
 				C37FB8BE1768E23000D47D31 /* Record.m in Sources */,
 				C37FB8C11768E23000D47D31 /* NSArray+convert.m in Sources */,
 				C3F51B8D177F4DEA000D136C /* Account.m in Sources */,
+				C3973669178DC9F1001B1106 /* PKRevealController.m in Sources */,
+				C397366A178DC9F1001B1106 /* PKRevealControllerContainerView.m in Sources */,
+				C397366B178DC9F1001B1106 /* UIViewController+PKRevealController.m in Sources */,
+				C3973671178DCAAB001B1106 /* ListViewController.m in Sources */,
+				C3973676178DCAF0001B1106 /* SettingsViewController.m in Sources */,
+				C397367B178DCB20001B1106 /* AddRecordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,14 +307,6 @@
 				C37FB89C1768DC0F00D47D31 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		C37FB8AD1768DC0F00D47D31 /* MMViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C37FB8AE1768DC0F00D47D31 /* en */,
-			);
-			name = MMViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

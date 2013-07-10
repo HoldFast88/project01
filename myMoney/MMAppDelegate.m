@@ -8,7 +8,9 @@
 
 #import "MMAppDelegate.h"
 
-#import "MMViewController.h"
+#import "ListViewController.h"
+#import "SettingsViewController.h"
+#import "AddRecordViewController.h"
 
 @implementation MMAppDelegate
 
@@ -16,7 +18,16 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[MMViewController alloc] initWithNibName:@"MMViewController" bundle:nil];
+    
+    ListViewController *leftViewController = [[ListViewController alloc] init];
+    SettingsViewController *rightViewController = [[SettingsViewController alloc] init];
+    UINavigationController *frontViewController = [[UINavigationController alloc] initWithRootViewController:[[AddRecordViewController alloc] init]];
+    
+    self.viewController = [PKRevealController revealControllerWithFrontViewController:frontViewController
+                                                                   leftViewController:leftViewController
+                                                                  rightViewController:rightViewController
+                                                                               options:nil];
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
