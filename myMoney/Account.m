@@ -10,7 +10,9 @@
 
 @implementation Account
 
+
 @synthesize name = _name;
+@synthesize amount;
 
 -(id)initWithName:(NSString *)name
 {
@@ -23,7 +25,8 @@
 
 -(NSString*)serviceName
 {
-    return [@([_name hash]) stringValue];
+    // !!! cannot start with number
+    return [_name stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 
 -(BOOL)createRecord:(Record*)record
@@ -44,6 +47,24 @@
 -(NSArray*)recordsWithTags:(NSArray*)tags
 {
     return [[DatabaseController instance] recordsWithTags:tags forAccount:self];
+}
+
+#pragma mark - NSCoding
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self){
+        self.amount = [aDecoder decodeIntForKey:@"amount"];
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeInt:self.amount forKey:@"amount"];
+    [aCoder encodeObject:self.name forKey:@"name"];
 }
 
 @end

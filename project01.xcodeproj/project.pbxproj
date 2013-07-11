@@ -40,10 +40,10 @@
 		C37FB8921768DC0F00D47D31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C37FB8941768DC0F00D47D31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C37FB8961768DC0F00D47D31 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C37FB89A1768DC0F00D47D31 /* myMoney-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myMoney-Info.plist"; sourceTree = "<group>"; };
+		C37FB89A1768DC0F00D47D31 /* project01-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "project01-Info.plist"; sourceTree = "<group>"; };
 		C37FB89C1768DC0F00D47D31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C37FB89E1768DC0F00D47D31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C37FB8A01768DC0F00D47D31 /* myMoney-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myMoney-Prefix.pch"; sourceTree = "<group>"; };
+		C37FB8A01768DC0F00D47D31 /* project01-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "project01-Prefix.pch"; sourceTree = "<group>"; };
 		C37FB8A11768DC0F00D47D31 /* MMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAppDelegate.h; sourceTree = "<group>"; };
 		C37FB8A21768DC0F00D47D31 /* MMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAppDelegate.m; sourceTree = "<group>"; };
 		C37FB8A41768DC0F00D47D31 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -143,10 +143,10 @@
 		C37FB8991768DC0F00D47D31 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C37FB89A1768DC0F00D47D31 /* myMoney-Info.plist */,
+				C37FB89A1768DC0F00D47D31 /* project01-Info.plist */,
 				C37FB89B1768DC0F00D47D31 /* InfoPlist.strings */,
 				C37FB89E1768DC0F00D47D31 /* main.m */,
-				C37FB8A01768DC0F00D47D31 /* myMoney-Prefix.pch */,
+				C37FB8A01768DC0F00D47D31 /* project01-Prefix.pch */,
 				C37FB8A41768DC0F00D47D31 /* Default.png */,
 				C37FB8A61768DC0F00D47D31 /* Default@2x.png */,
 				C37FB8A81768DC0F00D47D31 /* Default-568h@2x.png */,
@@ -215,9 +215,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C37FB88D1768DC0F00D47D31 /* myMoney */ = {
+		C37FB88D1768DC0F00D47D31 /* project01 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C37FB8B21768DC0F00D47D31 /* Build configuration list for PBXNativeTarget "myMoney" */;
+			buildConfigurationList = C37FB8B21768DC0F00D47D31 /* Build configuration list for PBXNativeTarget "project01" */;
 			buildPhases = (
 				C37FB88A1768DC0F00D47D31 /* Sources */,
 				C37FB88B1768DC0F00D47D31 /* Frameworks */,
@@ -227,7 +227,7 @@
 			);
 			dependencies = (
 			);
-			name = myMoney;
+			name = project01;
 			productName = myMoney;
 			productReference = C37FB88E1768DC0F00D47D31 /* Money History.app */;
 			productType = "com.apple.product-type.application";
@@ -242,7 +242,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Администратор";
 			};
-			buildConfigurationList = C37FB8881768DC0F00D47D31 /* Build configuration list for PBXProject "myMoney" */;
+			buildConfigurationList = C37FB8881768DC0F00D47D31 /* Build configuration list for PBXProject "project01" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -254,7 +254,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C37FB88D1768DC0F00D47D31 /* myMoney */,
+				C37FB88D1768DC0F00D47D31 /* project01 */,
 			);
 		};
 /* End PBXProject section */
@@ -365,8 +365,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "myMoney/myMoney-Prefix.pch";
-				INFOPLIST_FILE = "myMoney/myMoney-Info.plist";
+				GCC_PREFIX_HEADER = "myMoney/project01-Prefix.pch";
+				INFOPLIST_FILE = "myMoney/project01-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "Money History";
 				WRAPPER_EXTENSION = app;
@@ -377,8 +377,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "myMoney/myMoney-Prefix.pch";
-				INFOPLIST_FILE = "myMoney/myMoney-Info.plist";
+				GCC_PREFIX_HEADER = "myMoney/project01-Prefix.pch";
+				INFOPLIST_FILE = "myMoney/project01-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "Money History";
 				WRAPPER_EXTENSION = app;
@@ -388,7 +388,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C37FB8881768DC0F00D47D31 /* Build configuration list for PBXProject "myMoney" */ = {
+		C37FB8881768DC0F00D47D31 /* Build configuration list for PBXProject "project01" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C37FB8B01768DC0F00D47D31 /* Debug */,
@@ -397,7 +397,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C37FB8B21768DC0F00D47D31 /* Build configuration list for PBXNativeTarget "myMoney" */ = {
+		C37FB8B21768DC0F00D47D31 /* Build configuration list for PBXNativeTarget "project01" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C37FB8B31768DC0F00D47D31 /* Debug */,

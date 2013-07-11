@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C37FB88D1768DC0F00D47D31"
                BuildableName = "Money History.app"
-               BlueprintName = "myMoney"
-               ReferencedContainer = "container:myMoney.xcodeproj">
+               BlueprintName = "project01"
+               ReferencedContainer = "container:project01.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C37FB88D1768DC0F00D47D31"
             BuildableName = "Money History.app"
-            BlueprintName = "myMoney"
-            ReferencedContainer = "container:myMoney.xcodeproj">
+            BlueprintName = "project01"
+            ReferencedContainer = "container:project01.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,11 +53,16 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C37FB88D1768DC0F00D47D31"
             BuildableName = "Money History.app"
-            BlueprintName = "myMoney"
-            ReferencedContainer = "container:myMoney.xcodeproj">
+            BlueprintName = "project01"
+            ReferencedContainer = "container:project01.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
+         <AdditionalOption
+            key = "NSZombieEnabled"
+            value = "YES"
+            isEnabled = "YES">
+         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -71,8 +76,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C37FB88D1768DC0F00D47D31"
             BuildableName = "Money History.app"
-            BlueprintName = "myMoney"
-            ReferencedContainer = "container:myMoney.xcodeproj">
+            BlueprintName = "project01"
+            ReferencedContainer = "container:project01.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

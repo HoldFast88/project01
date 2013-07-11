@@ -57,47 +57,50 @@
 
 -(void)saveAccounts:(NSArray *)accounts
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        NSData *rawData = [NSKeyedArchiver archivedDataWithRootObject:accounts];
-        [defaults setObject:rawData forKey:kAccounts];
-        [defaults synchronize];
-    });
+    NSData *rawData = [NSKeyedArchiver archivedDataWithRootObject:accounts];
+    [defaults setObject:rawData forKey:kAccounts];
+    [defaults synchronize];
+}
+
+-(void)saveAccount:(Account *)account
+{
+    NSData *rawData = [defaults objectForKey:kAccounts];
+    NSArray *accountsList;
+    if (rawData){
+        accountsList = [NSKeyedUnarchiver unarchiveObjectWithData:rawData];
+    }else{
+        accountsList = @[];
+    }
+    
+    NSMutableArray *mutableAccountsList = [NSMutableArray arrayWithArray:accountsList];
+    [mutableAccountsList addObject:account];
+    
+    [self saveAccounts:mutableAccountsList];
 }
 
 -(BOOL)createAccount:(Account*)account
 {
-    // Get the documents directory
-    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsDir = [dirPaths objectAtIndex:0];
+    const char *dbpath = GetDatabasePath();
     
-    // Build the path to the database file
-    NSString *databaseFileName = dbFileName;
-    NSString *databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:databaseFileName]];
-    
-    NSFileManager *filemgr = [NSFileManager defaultManager];
-    
-    if ([filemgr fileExistsAtPath:databasePath] == NO){
-		const char *dbpath = GetDatabasePath();
+    if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK){
+        char *errMsg;
+        NSString *nameString = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (ID INTEGER PRIMARY KEY AUTOINCREMENT, AMOUNT TEXT, DESCRIPTION TEXT, DATE INTEGER, TAGS TEXT)", [account serviceName]];
         
-        if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK){
-            char *errMsg;
-            char *sql_stmt = NULL;
-            NSString *nameString = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (ID INTEGER PRIMARY KEY AUTOINCREMENT, AMOUNT REAL, DESCRIPTION TEXT, DATE INTEGER, TAGS TEXT)", [account serviceName]];
-            [nameString getCString:sql_stmt maxLength:[nameString lengthOfBytesUsingEncoding:NSASCIIStringEncoding] encoding:NSASCIIStringEncoding];
-            
-            if (sqlite3_exec(contactDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK){
-                NSLog(@"Failed to create table");
-                return NO;
-            }
-            sqlite3_close(contactDB);
-        } else {
-            NSLog(@"Failed to open/create database");
+        const char *sql_stmt = [nameString UTF8String];
+        
+        int executionState = sqlite3_exec(contactDB, sql_stmt, NULL, NULL, &errMsg);
+        
+        if (executionState != SQLITE_OK){
+            NSLog(@"Failed to create table");
             return NO;
         }
-    }else{
-        NSLog(@"Account with this name is already created");
+        sqlite3_close(contactDB);
+    } else {
+        NSLog(@"Failed to open/create database");
         return NO;
     }
+    
+    [self saveAccount:account];
     
     return YES;
 }

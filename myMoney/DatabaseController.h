@@ -21,6 +21,8 @@
 
 
 -(NSArray*)accounts;
+
+-(void)saveAccount:(Account *)account;
 -(void)saveAccounts:(NSArray*)accounts;
 
 -(BOOL)createAccount:(Account*)account;

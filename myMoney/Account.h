@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Account : NSObject
+@interface Account : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic) int amount;
+
 
 -(id)initWithName:(NSString*)name;
-
 
 -(BOOL)createRecord:(Record*)record;
 -(void)removeRecord:(Record*)record;
@@ -22,5 +23,6 @@
 -(NSArray*)recordsWithTags:(NSArray*)tags;
 
 -(NSString*)serviceName;
+
 
 @end
