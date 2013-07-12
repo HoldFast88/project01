@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8AD221B0179033A5001C51C7 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AD221AE179033A4001C51C7 /* settings@2x.png */; };
+		8AD221B1179033A5001C51C7 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AD221AF179033A5001C51C7 /* settings.png */; };
 		C37FB8931768DC0F00D47D31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37FB8921768DC0F00D47D31 /* UIKit.framework */; };
 		C37FB8951768DC0F00D47D31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37FB8941768DC0F00D47D31 /* Foundation.framework */; };
 		C37FB8971768DC0F00D47D31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37FB8961768DC0F00D47D31 /* CoreGraphics.framework */; };
@@ -36,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8AD221AE179033A4001C51C7 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		8AD221AF179033A5001C51C7 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		C37FB88E1768DC0F00D47D31 /* Money History.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money History.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37FB8921768DC0F00D47D31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C37FB8941768DC0F00D47D31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -206,6 +210,8 @@
 		C397367F178DCCC5001B1106 /* Recources */ = {
 			isa = PBXGroup;
 			children = (
+				8AD221AE179033A4001C51C7 /* settings@2x.png */,
+				8AD221AF179033A5001C51C7 /* settings.png */,
 				C3973680178DCCD4001B1106 /* reveal_menu_icon_portrait.png */,
 				C3973681178DCCD4001B1106 /* reveal_menu_icon_portrait@2x.png */,
 			);
@@ -273,6 +279,8 @@
 				C397367C178DCB20001B1106 /* AddRecordViewController.xib in Resources */,
 				C3973682178DCCD4001B1106 /* reveal_menu_icon_portrait.png in Resources */,
 				C3973683178DCCD4001B1106 /* reveal_menu_icon_portrait@2x.png in Resources */,
+				8AD221B0179033A5001C51C7 /* settings@2x.png in Resources */,
+				8AD221B1179033A5001C51C7 /* settings.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

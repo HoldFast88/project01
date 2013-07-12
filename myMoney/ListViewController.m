@@ -8,7 +8,11 @@
 
 #import "ListViewController.h"
 
-@interface ListViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ListViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
+{
+	UITextField *accountNameField;
+	UITextField *accountAmountField;
+}
 
 @property (strong, nonatomic) NSMutableArray *accounts;
 
@@ -79,7 +83,7 @@
         }else{
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:createAccountReuseID];
         }
-        cell.backgroundColor = [UIColor clearColor];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:0.698 green:0.525 blue:0.0 alpha:0.3]; // 0.698,0.525,0.529
     }
     
     if (isAccountCell){
@@ -87,6 +91,7 @@
         cell.textLabel.text = account.name;
         cell.detailTextLabel.text = [@(account.amount) stringValue]; // amount
     }else{
+		[cell.textLabel setFont:[UIFont systemFontOfSize:14.0]];
         cell.textLabel.text = @"Create new account";
     }
     
@@ -103,16 +108,49 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if ([indexPath row] == [accounts count]){ // create new account
-        /////
-        static int counter = 0;
-        Account *account = [[Account alloc] initWithName:[NSString stringWithFormat:@"sdfsdf%d", counter]];
-        [[DatabaseController instance] createAccount:account];
-        counter++;
-        /////
-        
-        [self reloadDatasource];
-        [accountsTableView reloadData];
+        if (accountNameField == nil || accountAmountField == nil){
+			accountNameField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 45.0, 260.0, 35.0)];
+			accountNameField.backgroundColor = [UIColor clearColor];
+			accountNameField.textColor = [UIColor whiteColor];
+			accountNameField.placeholder = @"Account name";
+			
+			accountAmountField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 80.0, 260.0, 35.0)];
+			accountAmountField.backgroundColor = [UIColor clearColor];
+			accountAmountField.textColor = [UIColor whiteColor];
+			accountAmountField.placeholder = @"Account initial balance";
+		}else{
+			accountNameField.text = @"";
+			accountAmountField.text = @"";
+		}
+		
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New account"
+														message:@" \n \n "
+													   delegate:self
+											  cancelButtonTitle:@"Cancel"
+											  otherButtonTitles:@"Create", nil];
+		
+		[alert addSubview:accountNameField];
+		[alert addSubview:accountAmountField];
+		
+		[alert show];
     }
+}
+
+#pragma mark - UIAlertViewDelegate
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 1){ // create account
+		NSString *accountName = accountNameField.text;
+		NSString *accountAmount = accountAmountField.text;
+		
+		Account *account = [[Account alloc] initWithName:accountName
+											   andAmount:[accountAmount floatValue]];
+        [[DatabaseController instance] createAccount:account];
+		
+		[self reloadDatasource];
+        [accountsTableView reloadData];
+	}
 }
 
 @end

@@ -28,17 +28,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIImage *revealImagePortrait = [UIImage imageNamed:@"reveal_menu_icon_portrait"];
-    UIImage *revealImageLandscape = [UIImage imageNamed:@"reveal_menu_icon_landscape"];
+    UIImage *imageList = [UIImage imageNamed:@"reveal_menu_icon_portrait.png"];
+    UIImage *imageSettings = [UIImage imageNamed:@"settings.png"];
     
     if (self.navigationController.revealController.type & PKRevealControllerTypeLeft)
     {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:revealImagePortrait landscapeImagePhone:revealImageLandscape style:UIBarButtonItemStylePlain target:self action:@selector(showLeftView:)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:imageList
+																   landscapeImagePhone:nil
+																				 style:UIBarButtonItemStylePlain
+																				target:self
+																				action:@selector(showLeftView:)];
     }
     
     if (self.navigationController.revealController.type & PKRevealControllerTypeRight)
     {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:revealImagePortrait landscapeImagePhone:revealImageLandscape style:UIBarButtonItemStylePlain target:self action:@selector(showRightView:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:imageSettings
+																	landscapeImagePhone:nil
+																				  style:UIBarButtonItemStylePlain
+																				 target:self
+																				 action:@selector(showRightView:)];
     }
 }
 

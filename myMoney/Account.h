@@ -11,10 +11,10 @@
 @interface Account : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic) int amount;
+@property (nonatomic) CGFloat amount;
 
 
--(id)initWithName:(NSString*)name;
+-(id)initWithName:(NSString *)name andAmount:(CGFloat)amount;
 
 -(BOOL)createRecord:(Record*)record;
 -(void)removeRecord:(Record*)record;
