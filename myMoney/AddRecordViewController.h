@@ -10,4 +10,7 @@
 
 @interface AddRecordViewController : UIViewController
 
+-(void)showAccount:(Account*)account;
+-(void)showAddRecord;
+
 @end

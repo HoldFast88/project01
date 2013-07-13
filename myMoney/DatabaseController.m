@@ -216,7 +216,7 @@
         }
     }
     
-    sqlite3_stmt *statement;
+    sqlite3_stmt *statement = nil;
     
     const char *query_stmt = [query UTF8String];
     

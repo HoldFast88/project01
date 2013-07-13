@@ -7,6 +7,8 @@
 //
 
 #import "ListViewController.h"
+#import "MMAppDelegate.h"
+#import "AddRecordViewController.h"
 
 @interface ListViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 {
@@ -133,6 +135,14 @@
 		[alert addSubview:accountAmountField];
 		
 		[alert show];
+    }else{
+        // selected account
+        Account *account = accounts[indexPath.row];
+        
+        UINavigationController *navigationController = (UINavigationController *)((MMAppDelegate*)[UIApplication sharedApplication].delegate).viewController.frontViewController;
+        AddRecordViewController *centerViewController = navigationController.viewControllers[0];
+        
+        [centerViewController showAccount:account];
     }
 }
 

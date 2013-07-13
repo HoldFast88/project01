@@ -82,4 +82,14 @@
     }
 }
 
+-(void)showAccount:(Account *)account
+{
+    [self showLeftView:nil];
+}
+
+-(void)showAddRecord
+{
+    
+}
+
 @end
