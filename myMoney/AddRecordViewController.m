@@ -8,10 +8,13 @@
 
 #import "AddRecordViewController.h"
 
-@interface AddRecordViewController ()
+@interface AddRecordViewController () <UITextFieldDelegate>
 {
     Account *showingAccount;
 }
+@property (nonatomic, weak) IBOutlet UITextField *amountField;
+@property (nonatomic, weak) IBOutlet UITextField *descriptionField;
+@property (nonatomic, weak) IBOutlet UITextField *tagsField;
 
 @end
 
@@ -20,6 +23,10 @@
 
 @synthesize addRecordView;
 @synthesize accountHistoryView;
+@synthesize amountField;
+@synthesize descriptionField;
+@synthesize tagsField;
+@synthesize historyTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -94,6 +101,10 @@
     accountHistoryView.hidden = NO;
     addRecordView.hidden = YES;
     
+    showingAccount = account;
+    
+    [historyTableView reloadData];
+    
     [self showLeftView:nil];
 }
 
@@ -103,6 +114,19 @@
     addRecordView.hidden = NO;
     
     [self showLeftView:nil];
+}
+
+-(void)createRecord:(id)sender
+{
+    CGFloat amount = [amountField.text floatValue];
+    NSString *description = descriptionField.text;
+    NSArray *tags = [[tagsField.text stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@","];
+    
+    Record *record = [[Record alloc] initWithAmount:amount
+                                        description:description
+                                            andTags:tags];
+    Account *tempAcc = [[DatabaseController instance] accounts][0];
+    [tempAcc createRecord:record];
 }
 
 #pragma mark - UITableViewDataSource
@@ -138,6 +162,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
 }
 
 @end

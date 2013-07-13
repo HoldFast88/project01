@@ -18,4 +18,6 @@
 -(void)showAccount:(Account*)account;
 -(void)showAddRecord;
 
+-(IBAction)createRecord:(id)sender;
+
 @end
