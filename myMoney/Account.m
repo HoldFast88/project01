@@ -13,6 +13,7 @@
 
 @synthesize name = _name;
 @synthesize amount = _amount;
+@synthesize recordsHistory;
 
 -(id)initWithName:(NSString *)name andAmount:(CGFloat)amount
 {
@@ -20,6 +21,7 @@
     if (self){
         _name = [[NSString alloc] initWithString:name];
 		_amount = amount;
+        recordsHistory = [@[] mutableCopy];
     }
     return self;
 }
@@ -32,17 +34,19 @@
 
 -(BOOL)createRecord:(Record*)record
 {
+    [recordsHistory addObject:record];
     return [[DatabaseController instance] createRecord:record forAccount:self];
 }
 
 -(void)removeRecord:(Record*)record
 {
+    [recordsHistory removeObject:record];
     [[DatabaseController instance] removeRecord:record forAccount:self];
 }
 
 -(NSArray*)allRecords
 {
-    return [[DatabaseController instance] allRecordsForAccount:self];
+    return [NSArray arrayWithArray:recordsHistory];
 }
 
 -(NSArray*)recordsWithTags:(NSArray*)tags
@@ -58,6 +62,8 @@
     if (self){
         self.amount = [aDecoder decodeFloatForKey:@"amount"];
         self.name = [aDecoder decodeObjectForKey:@"name"];
+        
+        recordsHistory = [[[DatabaseController instance] allRecordsForAccount:self] mutableCopy];
     }
     return self;
 }

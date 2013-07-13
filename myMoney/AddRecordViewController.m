@@ -9,10 +9,17 @@
 #import "AddRecordViewController.h"
 
 @interface AddRecordViewController ()
+{
+    Account *showingAccount;
+}
 
 @end
 
+
 @implementation AddRecordViewController
+
+@synthesize addRecordView;
+@synthesize accountHistoryView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -84,12 +91,53 @@
 
 -(void)showAccount:(Account *)account
 {
+    accountHistoryView.hidden = NO;
+    addRecordView.hidden = YES;
+    
     [self showLeftView:nil];
 }
 
 -(void)showAddRecord
 {
+    accountHistoryView.hidden = YES;
+    addRecordView.hidden = NO;
     
+    [self showLeftView:nil];
+}
+
+#pragma mark - UITableViewDataSource
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *reuseID = @"reuseIDRecordsList";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
+    
+    if (cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
+    }
+    
+    Record *record = showingAccount.recordsHistory[indexPath.row];
+    
+    cell.textLabel.text = [@(record.amount) stringValue];
+    cell.detailTextLabel.text = record.description;
+    
+    if (record.isProfit){
+        cell.contentView.backgroundColor = [UIColor greenColor];
+    }else{
+        cell.contentView.backgroundColor = [UIColor blueColor];
+    }
+    
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [showingAccount.recordsHistory count];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
