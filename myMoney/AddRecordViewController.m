@@ -140,7 +140,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
     }
     
-    Record *record = showingAccount.recordsHistory[indexPath.row];
+    Record *record = [showingAccount allRecords][indexPath.row];
     
     cell.textLabel.text = [@(record.amount) stringValue];
     cell.detailTextLabel.text = record.description;
@@ -156,7 +156,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [showingAccount.recordsHistory count];
+    return [[showingAccount allRecords] count];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -169,6 +169,7 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+	return YES;
 }
 
 @end
