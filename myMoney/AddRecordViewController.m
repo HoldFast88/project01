@@ -138,11 +138,14 @@
     
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
+		
+		cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+		cell.textLabel.backgroundColor = [UIColor clearColor];
     }
     
     Record *record = [showingAccount allRecords][indexPath.row];
     
-    cell.textLabel.text = [@(record.amount) stringValue];
+    cell.textLabel.text = [NSString stringWithFormat:@"%.2f", record.amount];
     cell.detailTextLabel.text = record.description;
     
     if (record.isProfit){
