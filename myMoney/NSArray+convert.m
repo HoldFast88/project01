@@ -18,6 +18,10 @@
         returnString = [returnString stringByAppendingFormat:@"%@,", value];
     }
     
+	if (returnString.length < 2){
+		return @"";
+	}
+	
     returnString = [returnString substringToIndex:returnString.length - 2]; // remove last comma
     
     return returnString;

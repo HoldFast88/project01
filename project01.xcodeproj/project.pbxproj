@@ -38,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8AA1B6EB179953F900692390 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
 		8AD221AE179033A4001C51C7 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		8AD221AF179033A5001C51C7 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		C37FB88E1768DC0F00D47D31 /* Money History.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money History.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +150,7 @@
 			children = (
 				C37FB89A1768DC0F00D47D31 /* project01-Info.plist */,
 				C37FB89B1768DC0F00D47D31 /* InfoPlist.strings */,
+				8AA1B6EB179953F900692390 /* defines.h */,
 				C37FB89E1768DC0F00D47D31 /* main.m */,
 				C37FB8A01768DC0F00D47D31 /* project01-Prefix.pch */,
 				C37FB8A41768DC0F00D47D31 /* Default.png */,
@@ -372,11 +374,13 @@
 		C37FB8B31768DC0F00D47D31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Taras Filatov (6AVH4TA956)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMoney/project01-Prefix.pch";
 				INFOPLIST_FILE = "myMoney/project01-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "Money History";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9945B46A-1261-4181-A7D8-B6AB55692D6C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

@@ -127,6 +127,14 @@
                                             andTags:tags];
     Account *tempAcc = [[DatabaseController instance] accounts][0];
     [tempAcc createRecord:record];
+	
+	[amountField setText:@""];
+	[descriptionField setText:@""];
+	[tagsField setText:@""];
+	
+	[amountField resignFirstResponder];
+	[descriptionField resignFirstResponder];
+	[tagsField resignFirstResponder];
 }
 
 #pragma mark - UITableViewDataSource

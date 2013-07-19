@@ -199,7 +199,7 @@
 -(NSArray *)recordsWithTags:(NSArray *)tags forAccount:(Account*)account
 {
 //    SELECT * FROM users WHERE (instr(tags, 'tag2') > 0) AND (instr(tags, 'tag1') > 0) 
-    
+	
     if (tags.count == 0){
         return @[];
     }

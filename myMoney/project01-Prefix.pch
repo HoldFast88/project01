@@ -17,4 +17,5 @@
     #import "Record.h"
     #import "Account.h"
     #import "PKRevealController.h"
+	#import "defines.h"
 #endif

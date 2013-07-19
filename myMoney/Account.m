@@ -8,11 +8,19 @@
 
 #import "Account.h"
 
+@interface Account ()
+
+@property (nonatomic) CGFloat initialAmount;
+
+@end
+
+
 @implementation Account
 
 
 @synthesize name = _name;
 @synthesize amount = _amount;
+@synthesize initialAmount;
 
 -(id)initWithName:(NSString *)name andAmount:(CGFloat)amount
 {
@@ -20,6 +28,7 @@
     if (self){
         _name = [[NSString alloc] initWithString:name];
 		_amount = amount;
+		initialAmount = amount;
     }
     return self;
 }
@@ -32,17 +41,22 @@
 
 -(BOOL)createRecord:(Record*)record
 {
-    return [[DatabaseController instance] createRecord:record forAccount:self];
+	BOOL isSuccess = [[DatabaseController instance] createRecord:record forAccount:self];
+	[self updateAmount];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kUpdateAccountsList object:nil];
+	
+	return isSuccess;
 }
 
 -(void)removeRecord:(Record*)record
 {
     [[DatabaseController instance] removeRecord:record forAccount:self];
+	[self updateAmount];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kUpdateAccountsList object:nil];
 }
 
 -(NSArray*)allRecords
 {
-//    return [NSArray arrayWithArray:recordsHistory];
 	return [[DatabaseController instance] allRecordsForAccount:self];
 }
 
@@ -57,16 +71,29 @@
 {
     self = [super init];
     if (self){
-        self.amount = [aDecoder decodeFloatForKey:@"amount"];
+        self.initialAmount = [aDecoder decodeFloatForKey:@"initAmount"];
         self.name = [aDecoder decodeObjectForKey:@"name"];
+		
+		[self updateAmount];
     }
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeFloat:self.amount forKey:@"amount"];
+    [aCoder encodeFloat:self.initialAmount forKey:@"initAmount"];
     [aCoder encodeObject:self.name forKey:@"name"];
+}
+
+#pragma mark - Private methods
+
+-(void)updateAmount
+{
+	self.amount = 0.0;
+	NSArray *records = [self allRecords];
+	for (Record *record in records){
+		self.amount += record.amount;
+	}
 }
 
 @end
