@@ -8,13 +8,15 @@
 
 #import "AddRecordViewController.h"
 
-@interface AddRecordViewController () <UITextFieldDelegate>
+@interface AddRecordViewController () <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
-    Account *showingAccount;
+    Account *showingAccount; // for records list state
+	Account *selectedAccount; // for add record state
 }
 @property (nonatomic, weak) IBOutlet UITextField *amountField;
 @property (nonatomic, weak) IBOutlet UITextField *descriptionField;
 @property (nonatomic, weak) IBOutlet UITextField *tagsField;
+@property (nonatomic, weak) IBOutlet UIButton *activeAccountButton;
 
 @end
 
@@ -27,6 +29,7 @@
 @synthesize descriptionField;
 @synthesize tagsField;
 @synthesize historyTableView;
+@synthesize activeAccountButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -62,6 +65,28 @@
 																				 target:self
 																				 action:@selector(showRightView:)];
     }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	NSArray *allAccounts = [[DatabaseController instance] accounts];
+	if (allAccounts.count != 0){
+		selectedAccount = allAccounts[0];
+	}else{
+		selectedAccount = nil;
+	}
+	[self updateAddRecordInterface];
+}
+
+-(void)updateAddRecordInterface
+{
+	if (selectedAccount != nil){
+		[activeAccountButton setTitle:selectedAccount.name forState:UIControlStateNormal];
+	}else{
+		[activeAccountButton setTitle:@"Create account at first" forState:UIControlStateNormal];
+	}
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,8 +150,7 @@
     Record *record = [[Record alloc] initWithAmount:amount
                                         description:description
                                             andTags:tags];
-    Account *tempAcc = [[DatabaseController instance] accounts][0];
-    [tempAcc createRecord:record];
+    [selectedAccount createRecord:record];
 	
 	[amountField setText:@""];
 	[descriptionField setText:@""];
@@ -135,6 +159,15 @@
 	[amountField resignFirstResponder];
 	[descriptionField resignFirstResponder];
 	[tagsField resignFirstResponder];
+}
+
+-(void)selectAccount:(id)sender
+{
+	UIPickerView *picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 280, [UIScreen mainScreen].bounds.size.width, 280)];
+	picker.dataSource = self;
+	picker.delegate = self;
+	[addRecordView addSubview:picker];
+	[picker reloadAllComponents];
 }
 
 #pragma mark - UITableViewDataSource
@@ -181,6 +214,31 @@
 {
     [textField resignFirstResponder];
 	return YES;
+}
+
+#pragma mark - UIPickerViewDataSource
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+	return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+	return [[DatabaseController instance].accounts count];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+	selectedAccount = [DatabaseController instance].accounts[row];
+	[self updateAddRecordInterface];
+	[pickerView removeFromSuperview];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+	Account *account = [DatabaseController instance].accounts[row];
+	return account.name;
 }
 
 @end

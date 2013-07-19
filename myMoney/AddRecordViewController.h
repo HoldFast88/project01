@@ -19,5 +19,6 @@
 -(void)showAddRecord;
 
 -(IBAction)createRecord:(id)sender;
+-(IBAction)selectAccount:(id)sender;
 
 @end
