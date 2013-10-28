@@ -16,7 +16,7 @@
 @synthesize date;
 @synthesize ID;
 
--(id)initWithAmount:(double)amount description:(NSString *)description andTags:(NSArray *)tags
+-(id)initWithAmount:(CGFloat)amount description:(NSString *)description andTags:(NSArray *)tags
 {
     self = [super init];
     if (self){
@@ -31,7 +31,7 @@
 
 -(BOOL)isProfit
 {
-    return _amount > 0.0;
+    return _amount > 0.0f;
 }
 
 @end

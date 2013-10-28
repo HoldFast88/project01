@@ -15,7 +15,7 @@
 #define kAccountCellReuseId @"reuseIdAccountCell"
 #define kNewAccountCellReuseId @"reuseIdNewAccountCell"
 
-@interface ListViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface ListViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIAlertViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *accounts;
@@ -144,11 +144,49 @@
 	return 2;
 }
 
+#pragma mark - UIAlertViewDelegate
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	UITextField *topTextView = [alertView textFieldAtIndex:0];
+	UITextField *bottomTextView = [alertView textFieldAtIndex:1];
+	
+	Account *account = [[Account alloc] initWithName:topTextView.text andAmount:bottomTextView.text.floatValue];
+	[[DatabaseController instance] createAccount:account];
+	
+	[self needToUpdateAccountsList];
+	[self.collectionView reloadData];
+}
+
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	
+	switch ([indexPath section]) {
+		case 0:
+		{
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New account"
+															message:@"Enter account name and initial balance"
+														   delegate:self
+												  cancelButtonTitle:@"Cancel"
+												  otherButtonTitles:@"Create", nil];
+			[alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+			
+			UITextField *topTextView = [alert textFieldAtIndex:0];
+			UITextField *bottomTextView = [alert textFieldAtIndex:1];
+			
+			[topTextView setPlaceholder:@"Account name"];
+			
+			[bottomTextView setPlaceholder:@"Initial balance"];
+			[bottomTextView setSecureTextEntry:NO];
+			
+			[alert show];
+		}
+			break;
+			
+		default:
+			break;
+	}
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
