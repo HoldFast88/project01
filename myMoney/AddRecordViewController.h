@@ -8,17 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddRecordViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, weak) IBOutlet UIView *addRecordView;
-@property (nonatomic, weak) IBOutlet UIView *accountHistoryView;
-
-@property (nonatomic, weak) IBOutlet UITableView *historyTableView;
-
--(void)showAccount:(Account*)account;
--(void)showAddRecord;
-
--(IBAction)createRecord:(id)sender;
--(IBAction)selectAccount:(id)sender;
+@interface AddRecordViewController : UIViewController
 
 @end

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		8AD221B0179033A5001C51C7 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AD221AE179033A4001C51C7 /* settings@2x.png */; };
 		8AD221B1179033A5001C51C7 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AD221AF179033A5001C51C7 /* settings.png */; };
+		8AFAAEC7181E6C4B002E4168 /* MMAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAAEC6181E6C4B002E4168 /* MMAccountCell.m */; };
+		8AFAAEC9181E6C63002E4168 /* MMAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFAAEC8181E6C63002E4168 /* MMAccountCell.xib */; };
+		8AFAAECE181E6FA8002E4168 /* MMNewAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAAECD181E6FA8002E4168 /* MMNewAccountCell.m */; };
+		8AFAAED0181E6FBC002E4168 /* MMNewAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFAAECF181E6FBC002E4168 /* MMNewAccountCell.xib */; };
 		C37FB8931768DC0F00D47D31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37FB8921768DC0F00D47D31 /* UIKit.framework */; };
 		C37FB8951768DC0F00D47D31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37FB8941768DC0F00D47D31 /* Foundation.framework */; };
 		C37FB8971768DC0F00D47D31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37FB8961768DC0F00D47D31 /* CoreGraphics.framework */; };
@@ -41,6 +45,12 @@
 		8AA1B6EB179953F900692390 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
 		8AD221AE179033A4001C51C7 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		8AD221AF179033A5001C51C7 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		8AFAAEC5181E6C4B002E4168 /* MMAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAccountCell.h; sourceTree = "<group>"; };
+		8AFAAEC6181E6C4B002E4168 /* MMAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAccountCell.m; sourceTree = "<group>"; };
+		8AFAAEC8181E6C63002E4168 /* MMAccountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MMAccountCell.xib; sourceTree = "<group>"; };
+		8AFAAECC181E6FA8002E4168 /* MMNewAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMNewAccountCell.h; sourceTree = "<group>"; };
+		8AFAAECD181E6FA8002E4168 /* MMNewAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMNewAccountCell.m; sourceTree = "<group>"; };
+		8AFAAECF181E6FBC002E4168 /* MMNewAccountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MMNewAccountCell.xib; sourceTree = "<group>"; };
 		C37FB88E1768DC0F00D47D31 /* Money History.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money History.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37FB8921768DC0F00D47D31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C37FB8941768DC0F00D47D31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -99,6 +109,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8AFAAEC4181E6C32002E4168 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				8AFAAECB181E6F95002E4168 /* New Account Cell */,
+				8AFAAECA181E6F86002E4168 /* Amount Cell */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		8AFAAECA181E6F86002E4168 /* Amount Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8AFAAEC5181E6C4B002E4168 /* MMAccountCell.h */,
+				8AFAAEC6181E6C4B002E4168 /* MMAccountCell.m */,
+				8AFAAEC8181E6C63002E4168 /* MMAccountCell.xib */,
+			);
+			name = "Amount Cell";
+			sourceTree = "<group>";
+		};
+		8AFAAECB181E6F95002E4168 /* New Account Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8AFAAECC181E6FA8002E4168 /* MMNewAccountCell.h */,
+				8AFAAECD181E6FA8002E4168 /* MMNewAccountCell.m */,
+				8AFAAECF181E6FBC002E4168 /* MMNewAccountCell.xib */,
+			);
+			name = "New Account Cell";
+			sourceTree = "<group>";
+		};
 		C37FB8831768DC0F00D47D31 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +174,7 @@
 				C37FB8A21768DC0F00D47D31 /* MMAppDelegate.m */,
 				C37FB8BF1768E23000D47D31 /* NSArray+convert.h */,
 				C37FB8C01768E23000D47D31 /* NSArray+convert.m */,
+				8AFAAEC4181E6C32002E4168 /* Custom Views */,
 				C397367F178DCCC5001B1106 /* Recources */,
 				C397366D178DCA86001B1106 /* ViewControllers */,
 				C3973662178DC9F1001B1106 /* Controller */,
@@ -273,11 +313,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37FB89D1768DC0F00D47D31 /* InfoPlist.strings in Resources */,
+				8AFAAEC9181E6C63002E4168 /* MMAccountCell.xib in Resources */,
 				C37FB8A51768DC0F00D47D31 /* Default.png in Resources */,
 				C37FB8A71768DC0F00D47D31 /* Default@2x.png in Resources */,
 				C37FB8A91768DC0F00D47D31 /* Default-568h@2x.png in Resources */,
 				C3973672178DCAAB001B1106 /* ListViewController.xib in Resources */,
 				C3973677178DCAF0001B1106 /* SettingsViewController.xib in Resources */,
+				8AFAAED0181E6FBC002E4168 /* MMNewAccountCell.xib in Resources */,
 				C397367C178DCB20001B1106 /* AddRecordViewController.xib in Resources */,
 				C3973682178DCCD4001B1106 /* reveal_menu_icon_portrait.png in Resources */,
 				C3973683178DCCD4001B1106 /* reveal_menu_icon_portrait@2x.png in Resources */,
@@ -301,10 +343,12 @@
 				C3F51B8D177F4DEA000D136C /* Account.m in Sources */,
 				C3973669178DC9F1001B1106 /* PKRevealController.m in Sources */,
 				C397366A178DC9F1001B1106 /* PKRevealControllerContainerView.m in Sources */,
+				8AFAAECE181E6FA8002E4168 /* MMNewAccountCell.m in Sources */,
 				C397366B178DC9F1001B1106 /* UIViewController+PKRevealController.m in Sources */,
 				C3973671178DCAAB001B1106 /* ListViewController.m in Sources */,
 				C3973676178DCAF0001B1106 /* SettingsViewController.m in Sources */,
 				C397367B178DCB20001B1106 /* AddRecordViewController.m in Sources */,
+				8AFAAEC7181E6C4B002E4168 /* MMAccountCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +422,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMoney/project01-Prefix.pch";
 				INFOPLIST_FILE = "myMoney/project01-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Money History";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9945B46A-1261-4181-A7D8-B6AB55692D6C";
 				WRAPPER_EXTENSION = app;
@@ -391,7 +435,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMoney/project01-Prefix.pch";
 				INFOPLIST_FILE = "myMoney/project01-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Money History";
 				WRAPPER_EXTENSION = app;
 			};

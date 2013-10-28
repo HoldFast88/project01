@@ -10,6 +10,4 @@
 
 @interface ListViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITableView *accountsTableView;
-
 @end

@@ -9,29 +9,31 @@
 #import "ListViewController.h"
 #import "MMAppDelegate.h"
 #import "AddRecordViewController.h"
+#import "MMAccountCell.h"
+#import "MMNewAccountCell.h"
 
-@interface ListViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
-{
-	UITextField *accountNameField;
-	UITextField *accountAmountField;
-}
+#define kAccountCellReuseId @"reuseIdAccountCell"
+#define kNewAccountCellReuseId @"reuseIdNewAccountCell"
 
-@property (strong, nonatomic) NSMutableArray *accounts;
+@interface ListViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray *accounts;
 
 @end
 
 
 @implementation ListViewController
 
-@synthesize accountsTableView;
-@synthesize accounts;
+@synthesize collectionView = _collectionView;
+@synthesize accounts = _accounts;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self createObjects];
+        
     }
     return self;
 }
@@ -40,21 +42,9 @@
 {
     self = [super init];
     if (self){
-        [self createObjects];
+        
     }
     return self;
-}
-
-- (void)createObjects
-{
-    accounts = [[NSMutableArray alloc] init];
-    [self reloadDatasource];
-}
-
-- (void)reloadDatasource
-{
-    [accounts removeAllObjects];
-    [accounts addObjectsFromArray:[DatabaseController instance].accounts];
 }
 
 - (void)viewDidLoad
@@ -62,6 +52,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needToUpdateAccountsList) name:kUpdateAccountsList object:nil];
+	
+	[self.collectionView registerNib:[UINib nibWithNibName:@"MMAccountCell" bundle:nil] forCellWithReuseIdentifier:kAccountCellReuseId];
+	[self.collectionView registerNib:[UINib nibWithNibName:@"MMNewAccountCell" bundle:nil] forCellWithReuseIdentifier:kNewAccountCellReuseId];
 }
 
 -(void)viewDidUnload
@@ -78,171 +71,130 @@
 
 - (void)needToUpdateAccountsList
 {
-	[self reloadDatasource];
-	[accountsTableView reloadData];
+	_accounts = nil;
+	[self accounts];
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - Getters
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(NSArray *)accounts
 {
-    static NSString *reuseID = @"reuseID";
-    static NSString *createAccountReuseID = @"createAccountReuseID";
-    static NSString *addRecordReuseID = @"addRecordReuseID";
-    
-    UITableViewCell *cell;
-    
-    switch ([indexPath section]) {
-        case 0:
-        {
-            cell = [tableView dequeueReusableCellWithIdentifier:addRecordReuseID];
-            
-            if (cell == nil){
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:addRecordReuseID];
-            }
-            
-            [cell.textLabel setFont:[UIFont systemFontOfSize:14.0]];
-            cell.textLabel.text = @"Add record";
-        }
-            break;
-            
-        case 1:
-        {
-            cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
-            
-            if (cell == nil){
-                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
-            }
-            
-            Account *account = accounts[indexPath.row];
-            cell.textLabel.text = account.name;
-            cell.detailTextLabel.text = [@(account.amount) stringValue]; // amount
-        }
-            break;
-            
-        case 2:
-        {
-            cell = [tableView dequeueReusableCellWithIdentifier:createAccountReuseID];
-            
-            if (cell == nil){
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:createAccountReuseID];
-            }
-            
-            [cell.textLabel setFont:[UIFont systemFontOfSize:14.0]];
-            cell.textLabel.text = @"Create new account";
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return cell;
+	if (!_accounts)
+	{
+		_accounts = [DatabaseController instance].accounts;
+	}
+	
+	return _accounts;
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 3;
-}
+#pragma mark - UICollectionViewDataSource
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    switch (section) {
-        case 0:
-        {
-            return 1;
-        }
-            break;
-            
-        case 1:
-        {
-            return [accounts count];
-        }
-            break;
-            
-        case 2:
-        {
-            return 1;
-        }
-            break;
-            
-        default:
-            return 0;
-            break;
-    }
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    UINavigationController *navigationController = (UINavigationController *)((MMAppDelegate*)[UIApplication sharedApplication].delegate).viewController.frontViewController;
-    AddRecordViewController *centerViewController = navigationController.viewControllers[0];
-    
-    switch ([indexPath section]) {
-        case 0: // add record
-        {
-            [centerViewController showAddRecord];
-        }
-            break;
-            
-        case 1:
-        {
-            Account *account = accounts[indexPath.row];
-            [centerViewController showAccount:account];
-        }
-            break;
-            
-        case 2: // create new account
-        {
-            if (accountNameField == nil || accountAmountField == nil){
-                accountNameField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 45.0, 260.0, 35.0)];
-                accountNameField.backgroundColor = [UIColor clearColor];
-                accountNameField.textColor = [UIColor whiteColor];
-                accountNameField.placeholder = @"Account name";
-                
-                accountAmountField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 80.0, 260.0, 35.0)];
-                accountAmountField.backgroundColor = [UIColor clearColor];
-                accountAmountField.textColor = [UIColor whiteColor];
-                accountAmountField.placeholder = @"Account initial balance";
-            }else{
-                accountNameField.text = @"";
-                accountAmountField.text = @"";
-            }
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New account"
-                                                            message:@" \n \n "
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Cancel"
-                                                  otherButtonTitles:@"Create", nil];
-            
-            [alert addSubview:accountNameField];
-            [alert addSubview:accountAmountField];
-            
-            [alert show];
-        }
-            break;
-            
-        default:
-            break;
-    }
-}
-
-#pragma mark - UIAlertViewDelegate
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	if (buttonIndex == 1){ // create account
-		NSString *accountName = accountNameField.text;
-		NSString *accountAmount = accountAmountField.text;
-		
-		Account *account = [[Account alloc] initWithName:accountName
-											   andAmount:[accountAmount floatValue]];
-        [[DatabaseController instance] createAccount:account];
-		
-		[self reloadDatasource];
-        [accountsTableView reloadData];
+	switch (section) {
+		case 0:
+		{
+			return 1;
+		}
+			break;
+			
+		case 1:
+		{
+			return [self accounts].count;
+		}
+			break;
+			
+		default:
+			return 0;
+			break;
 	}
 }
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	UICollectionViewCell *cell;
+	
+	switch ([indexPath section]) {
+		case 0:
+		{
+			cell = [collectionView dequeueReusableCellWithReuseIdentifier:kNewAccountCellReuseId forIndexPath:indexPath];
+		}
+			break;
+			
+		case 1:
+		{
+			cell = [collectionView dequeueReusableCellWithReuseIdentifier:kAccountCellReuseId forIndexPath:indexPath];
+			
+			Account *account = self.accounts[indexPath.row];
+			((MMAccountCell*)cell).titleLabel.text = account.name;
+			((MMAccountCell*)cell).amountLabel.text = [@(account.amount) stringValue];
+		}
+			break;
+			
+		default:
+			break;
+	}
+	
+	return cell;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+	return 2;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	UIView *view;
+	
+	switch ([indexPath section]) {
+		case 0:
+		{
+			view = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MMNewAccountCell class]) owner:self options:nil]objectAtIndex:0];
+		}
+			break;
+			
+		case 1:
+		{
+			view = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MMAccountCell class]) owner:self options:nil]objectAtIndex:0];
+		}
+			break;
+			
+		default:
+			break;
+	}
+	
+	return view.frame.size;
+}
+
+//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+//{
+//	
+//}
+//
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+//{
+//	
+//}
+//
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+//{
+//	
+//}
+//
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+//{
+//	
+//}
+//
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+//{
+//	
+//}
 
 @end
